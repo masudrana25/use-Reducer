@@ -12,7 +12,9 @@ export const reducer = (state, action) => {
       const allPataints = [...state.pataint, newPataint];
       return {pataint: allPataints};
     case 'REMOVE_PATAINT':
-      return state;  
+      const remainingPataints = state.pataint.filter(pd => pd.id !== action.id);
+      const newState = { pataint: remainingPataints }
+      return newState;  
     default:
       return state;
   }

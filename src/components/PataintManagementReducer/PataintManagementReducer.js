@@ -9,10 +9,11 @@ const PataintManagementReducer = () => {
     dispatch({
       type: 'ADD_PATAINT',
       name: nameRef.current.value,
-      id: state.length + 1
+      id: state.pataint.length + 1
     });
     nameRef.current.value = '';
-  }
+  };
+  console.log(state.pataint.length);
   return (
     <div>
       <h1>Manage Doctor's Chamber </h1>
@@ -21,7 +22,7 @@ const PataintManagementReducer = () => {
         <input ref={nameRef} />
       </form>
       {
-        state.pataint.map(pd => <li onClick={() => dispatch({type: 'REMOVE_PATAINT'})}>{pd.name}</li>)
+        state.pataint.map(pd=> <li onClick={()=>dispatch({type:'REMOVE_PATAINT',id: pd.id})}>{pd.name}</li>)
       }
     </div>
   );
